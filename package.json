@@ -1,0 +1,19 @@
+{
+  "name": "momentum",
+  "version": "1.0.0",
+  "description": "rsschool_momentum",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Svetik-K/momentum.git"
+  },
+  "author": "Svetik-K",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Svetik-K/momentum/issues"
+  },
+  "homepage": "https://github.com/Svetik-K/momentum#readme"
+}
