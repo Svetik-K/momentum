@@ -1,9 +1,9 @@
-import './style.css'
+import '../css/style.css'
+import '../css/owfont-master/css/owfont-regular.css'
 import {showTime} from './calender'
-import Weather from './weather'
+import {getWeather} from './weather'
 
 showTime();
-let today = new Weather(23)
-console.log(today.getTemperature())
+getWeather();
 
 
