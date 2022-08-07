@@ -4,7 +4,6 @@ async function getWeather() {
     console.log()
     document.querySelector('.weather__city').innerHTML = `
     <p>${data.name}</p>
-    <hr>
     `;
     document.querySelector('.weather__forecast').innerHTML = `
     <ul>

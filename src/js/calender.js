@@ -20,13 +20,13 @@ function showGreeting() {
     let message = '';
     let currentDate = new Date();
     let hour = currentDate.getHours();
-    if(hour > 5 && hour < 13) {
+    if(hour > 5 && hour < 12) {
         message = `Good morning, `;
     }
-    else if(hour > 12 && hour < 18) {
+    else if(hour >= 12 && hour < 18) {
         message = `Good afternoon, `;
     }
-    else if(hour > 17 && hour < 24) {
+    else if(hour >= 17 && hour < 24) {
         message = `Good evening, `;
     }else {
         message = `Good night, `;

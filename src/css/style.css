@@ -18,21 +18,59 @@ ul {
 }
 
 body {
-    background: url(./../assets/images/bg.jpg);
+    background: url(../assets/images/bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .page-wrapper {
+    display: flex;
+    flex-direction: column;
     max-width: 1920px;
+    min-height: 100%;
+    margin: 0 auto;
 }
 
 .header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px 50px;
     box-sizing: border-box;
+}
+.audio-player__controllers {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.button_prev {
+    width: 30px;
+    height: 30px;
+    background: url(../assets/svg/play-prev.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.button_play {
+    width: 40px;
+    height: 40px;
+    background: url(../assets/svg/play.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.button_next {
+    width: 30px;
+    height: 30px;
+    background: url(../assets/svg/play-next.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .weather {
@@ -44,21 +82,19 @@ body {
     width: 100%;
     text-align: left;
     font-size: 2.2rem;
+    line-height: 3.2rem;
+    border-bottom: 2px solid #FEFBE7;
+    margin-bottom: 5px;
 }
 .weather__city p {
     margin: 0;
-}
-.weather__city hr  {
-    display: block;
-    margin: 10px 0;
-    width: 100%;
 }
 
 .weather__forecast {
     font-size: 1.6rem;
 }
 .weather__forecast ul li{
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .main {
@@ -81,6 +117,7 @@ body {
     font-size: 7.6rem;
     line-height: 8.6rem;
     font-weight: bold;
+    margin-bottom: 20px;
 }
 .current-date {
     font-size: 2.6rem;
@@ -107,4 +144,30 @@ body {
 .name:active {
     font-size: 3rem;
     color:#FEFBE7;
+}
+
+.footer {
+    width: 100%;
+    flex: 1 1 auto;
+    padding: 20px 50px;
+    box-sizing: border-box;
+}
+.daily-wisdom {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.button_reload {
+    width: 40px;
+    height: 40px;
+    background: url(../assets/svg/reload.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.phrase {
+    text-align: center;
 }
