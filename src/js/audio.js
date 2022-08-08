@@ -1,12 +1,3 @@
-import '../css/style.css'
-import '../css/owfont-regular.css'
-import {showTime} from './calender'
-import {getWeather} from './weather'
-
-
-showTime();
-getWeather();
-
 const audioPlayer = document.querySelector('.audio-player');
 const playButton = document.querySelector('.button_play');
 const prevButton = document.querySelector('.button_prev');
@@ -15,8 +6,6 @@ const title = document.querySelector('.track-title');
 const track = document.querySelector('.track');
 const progressContainer = document.querySelector('.progress-container');
 const progress = document.querySelector('.progress');
-const audioBar = document.querySelector('.audio-player__info');
-
 
 const tracks = ['Aqua Caelestis', 'Ennio Morricone', 'River Flows In You', 'Summer Wind'];
 
@@ -30,7 +19,7 @@ function loadSong(song) {
 }
 
 function playSong() {
-    audioBar.classList.add('play');
+    audioPlayer.classList.add('play');
     playButton.style.background = `url(./assets/svg/pause.svg)`;
     playButton.style.backgroundSize = 'contain';
     
@@ -38,7 +27,7 @@ function playSong() {
 }
 
 function pauseSong() {
-    audioBar.classList.remove('play');
+    audioPlayer.classList.remove('play');
     playButton.style.background = `url(./assets/svg/play.svg)`;
     playButton.style.backgroundSize = 'contain';
 
@@ -84,7 +73,7 @@ function setProgress(e) {
 }
 
 playButton.addEventListener('click', () => {
-    const isPlaying = audioBar.classList.contains('play');
+    const isPlaying = audioPlayer.classList.contains('play');
 
     if(isPlaying) {
         pauseSong();
@@ -98,4 +87,6 @@ nextButton.addEventListener('click', nextSong);
 track.addEventListener('timeupdate', updateProgress);
 track.addEventListener('ended', nextSong);
 progressContainer.addEventListener('click', setProgress);
+
+
 
