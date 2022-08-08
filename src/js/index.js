@@ -7,8 +7,35 @@ import {getWeather} from './weather'
 showTime();
 getWeather();
 
-document.body.style.background = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/night/03.webp')`;
-document.body.style.backgroundSize = 'cover';
+
+let randomNum = Math.floor(Math.random() * 20) + 1;
+let timeOfDay = getTimeOfDay();
+setBackground(randomNum, timeOfDay);
+
+function setBackground(randomNum, timeOfDay) {
+    if(randomNum < 10) {
+        document.body.style.background = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${timeOfDay}/0${randomNum}.webp')`;
+    } else {
+        document.body.style.background = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${timeOfDay}/${randomNum}.webp')`;
+    }    
+    document.body.style.backgroundSize = 'cover';
+}
+
+function getTimeOfDay() {
+    let today = new Date();
+    let hour = today.getHours();
+    if(hour > 5 && hour < 12) {
+        return 'morning';
+    }
+    else if(hour >= 12 && hour < 18) {
+        return 'afternoon';
+    }
+    else if(hour >= 17 && hour < 24) {
+        return 'evening';
+    } else {
+        return 'night';
+    }
+}
 
 const audioPlayer = document.querySelector('.audio-player');
 const playButton = document.querySelector('.button_play');
