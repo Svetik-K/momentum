@@ -7,6 +7,9 @@ import {getWeather} from './weather'
 showTime();
 getWeather();
 
+document.body.style.background = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/night/03.webp')`;
+document.body.style.backgroundSize = 'cover';
+
 const audioPlayer = document.querySelector('.audio-player');
 const playButton = document.querySelector('.button_play');
 const prevButton = document.querySelector('.button_prev');
