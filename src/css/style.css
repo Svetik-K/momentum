@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+    --color-light: #FFF;
+    --color-dark: #1f1f1f;
+    --color-audio: #FF7300;
+}
+
 html, body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 10px;
-    font-family: 'Lato', sans-serif;
-    color: #FFF;
+    font-family: 'Inter', sans-serif;
+    color: var(--color-light);
     width: 100%;
     height: 100%;
 }
@@ -37,17 +45,19 @@ ul {
 /* Audio player */
 .audio-player {
     position: relative;
+    width: 20%;
 }
 .audio-player__controllers {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    padding: 10px 50px;
-    background-color: #1f1f1f;
+    padding: 10px 20px;
+    background-color:var(--color-dark);
     border-radius: 10px;
-    -webkit-box-shadow: 0px -4px 5px 5px rgba(255,255,255,0.7);
-    -moz-box-shadow: 0px -4px 5px 5px rgba(255,255,255,0.7);
-    box-shadow: 0px -4px 5px 5px rgba(255,255,255,0.7);  
+    -webkit-box-shadow: 0px -3px 5px 5px rgba(255,255,255,0.7);
+    -moz-box-shadow: 0px -3px 5px 5px rgba(255,255,255,0.7);
+    box-shadow: 0px -3px 5px 5px rgba(255,255,255,0.7);  
 }
 .button {
     background-color: transparent;
@@ -61,6 +71,7 @@ ul {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    padding-right: 10px;
 }
 .button_play {
     width: 30px;
@@ -78,12 +89,36 @@ ul {
     background-repeat: no-repeat;
     background-size: contain;
 }
+.button_volume {
+    width: 20px;
+    height: 20px;
+    background: url(../assets/svg/volume-up.ico);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.volume-container {
+    display: inline-block;
+    width: 30%;
+    background-color: var(--color-light);
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin: 5px 0; */
+    height: 4px;
+}
+.volume-progress {
+    background-color: var(--color-audio);
+    border-radius: 5px;
+    height: 100%;
+    width: 50%;
+}
+
 .audio-player__info {
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 0 0 10px 10px;
     opacity: 0;
     padding: 10px 10px;
@@ -92,13 +127,16 @@ ul {
 }
 .track-title {
     margin: 0;
+    color: #1f1f1f;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 .audio-player__info.play {
     opacity: 1;
     top: 40px;
 }
 .progress-container {
-    background-color: #fff;
+    background-color: var(--color-light);
     border-radius: 5px;
     cursor: pointer;
     margin: 5px 0;
@@ -106,7 +144,7 @@ ul {
     width: 100%;
 }
 .progress {
-    background-color: #1f1f1f;
+    background-color: var(--color-audio);
     border-radius: 5px;
     height: 100%;
     width: 50%;
@@ -143,7 +181,7 @@ ul {
     text-align: left;
     font-size: 2.2rem;
     line-height: 3.2rem;
-    border-bottom: 2px solid #FEFBE7;
+    border-bottom: 2px solid var(--color-light);
     margin-bottom: 5px;
 }
 .weather__city p {
@@ -209,16 +247,16 @@ ul {
     border: none;
     outline: none;
     font-size: 3rem;
-    color: #FFF;
+    color: var(--color-light);
     padding-left: 20px;
 }
 .name:focus {
     font-size: 3rem;
-    color:#FFF;
+    color: var(--color-light);
 }
 .name:active {
     font-size: 3rem;
-    color:#FFF;
+    color: var(--color-light);
 }
 
 .footer {

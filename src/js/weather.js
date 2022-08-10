@@ -1,7 +1,6 @@
 async function getWeather() {
     const res = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Минск&lang=en&appid=e8a5a3a53a239176e0c4f9263230cf4c&units=metric');
     const data = await res.json();
-    console.log()
     document.querySelector('.weather__city').innerHTML = `
     <p>${data.name}</p>
     `;

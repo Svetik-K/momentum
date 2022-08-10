@@ -1,11 +1,10 @@
 function showTime() {
     let currentDate = new Date();
     const curTime = document.querySelector('.current-time');
-    curTime.textContent = currentDate.toLocaleTimeString();
+    curTime.textContent = currentDate.toLocaleTimeString('en-GB');
     setTimeout(() => {
         showTime();
         showDate();
-        showGreeting();
     }, 1000);
 }
 
@@ -34,4 +33,4 @@ function showGreeting() {
     document.querySelector('.daytime').innerHTML = message;
 }
 
-export {showTime}
+export {showTime, showGreeting}

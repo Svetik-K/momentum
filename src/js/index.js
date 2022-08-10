@@ -1,43 +1,55 @@
 import '../css/style.css'
 import '../css/owfont-regular.css'
-import {showTime} from './calender'
-import {getWeather} from './weather'
+import { getRandomNum, getTimeOfDay, setBackground } from './background'
+import { showTime, showGreeting } from './calender'
+import { getWeather } from './weather'
 
 
 showTime();
+showGreeting();
 getWeather();
+ 
 
-
-let randomNum = Math.floor(Math.random() * 20) + 1;
+let randomNum = getRandomNum();
 let timeOfDay = getTimeOfDay();
+
 setBackground(randomNum, timeOfDay);
 
-function setBackground(randomNum, timeOfDay) {
-    if(randomNum < 10) {
-        document.body.style.background = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${timeOfDay}/0${randomNum}.webp')`;
-    } else {
-        document.body.style.background = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${timeOfDay}/${randomNum}.webp')`;
-    }    
-    document.body.style.backgroundSize = 'cover';
+
+// Background slider
+const slideLeft = document.querySelector('.button_slide-left');
+const slideRight = document.querySelector('.button_slide-right');
+
+function returnToPreviousSlide(random, time) {
+    if(random <= 1) {
+        random = 21;
+    }
+    random--;
+    setBackground(random, time); 
+    randomNum = random; 
 }
 
-function getTimeOfDay() {
-    let today = new Date();
-    let hour = today.getHours();
-    if(hour > 5 && hour < 12) {
-        return 'morning';
+function goToNextSlide(random, time) {
+    if(random === 20) {
+        random = 0;
     }
-    else if(hour >= 12 && hour < 18) {
-        return 'afternoon';
-    }
-    else if(hour >= 17 && hour < 24) {
-        return 'evening';
-    } else {
-        return 'night';
-    }
+    random++;
+    setBackground(random, time);
+    randomNum = random;     
 }
 
-const audioPlayer = document.querySelector('.audio-player');
+slideLeft.addEventListener('click', () => {
+    returnToPreviousSlide(randomNum,timeOfDay);
+});
+
+slideRight.addEventListener('click', () => {
+    goToNextSlide(randomNum,timeOfDay);
+});
+
+
+
+
+// Audio player
 const playButton = document.querySelector('.button_play');
 const prevButton = document.querySelector('.button_prev');
 const nextButton = document.querySelector('.button_next');
@@ -57,6 +69,7 @@ loadSong(tracks[trackIndex]);
 function loadSong(song) {
     title.textContent = song;
     track.src = `./assets/sounds/${song}.mp3`;
+    track.volume = 0.2;
 }
 
 function playSong() {
@@ -113,6 +126,7 @@ function setProgress(e) {
     track.currentTime = (clickX / width) * duration;
 }
 
+// Event listeners
 playButton.addEventListener('click', () => {
     const isPlaying = audioBar.classList.contains('play');
 

@@ -1,4 +1,3 @@
-const audioPlayer = document.querySelector('.audio-player');
 const playButton = document.querySelector('.button_play');
 const prevButton = document.querySelector('.button_prev');
 const nextButton = document.querySelector('.button_next');
@@ -6,6 +5,8 @@ const title = document.querySelector('.track-title');
 const track = document.querySelector('.track');
 const progressContainer = document.querySelector('.progress-container');
 const progress = document.querySelector('.progress');
+const audioBar = document.querySelector('.audio-player__info');
+
 
 const tracks = ['Aqua Caelestis', 'Ennio Morricone', 'River Flows In You', 'Summer Wind'];
 
@@ -19,7 +20,7 @@ function loadSong(song) {
 }
 
 function playSong() {
-    audioPlayer.classList.add('play');
+    audioBar.classList.add('play');
     playButton.style.background = `url(./assets/svg/pause.svg)`;
     playButton.style.backgroundSize = 'contain';
     
@@ -27,7 +28,7 @@ function playSong() {
 }
 
 function pauseSong() {
-    audioPlayer.classList.remove('play');
+    audioBar.classList.remove('play');
     playButton.style.background = `url(./assets/svg/play.svg)`;
     playButton.style.backgroundSize = 'contain';
 
@@ -73,7 +74,7 @@ function setProgress(e) {
 }
 
 playButton.addEventListener('click', () => {
-    const isPlaying = audioPlayer.classList.contains('play');
+    const isPlaying = audioBar.classList.contains('play');
 
     if(isPlaying) {
         pauseSong();
@@ -88,5 +89,13 @@ track.addEventListener('timeupdate', updateProgress);
 track.addEventListener('ended', nextSong);
 progressContainer.addEventListener('click', setProgress);
 
-
-
+// module.exports = {
+//     prevSong,
+//     nextSong,
+//     updateProgress,
+//     nextSong,
+//     setProgress,
+//     loadSong,
+//     playSong,
+//     pauseSong
+// }
