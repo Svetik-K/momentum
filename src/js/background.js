@@ -18,7 +18,7 @@ function setBackground(random, time) {
             document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${time}/${random}.webp')`;
         }   
     });
-      
+
     document.body.style.backgroundSize = 'cover';
 }
 
@@ -37,6 +37,7 @@ function getTimeOfDay() {
         return 'night';
     }
 }
+
 
 module.exports = {
     getRandomNum,
