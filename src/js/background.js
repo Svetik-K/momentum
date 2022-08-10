@@ -5,22 +5,20 @@ function getRandomNum() {
 
 function setBackground(random, time) {
     const background = new Image();
-    console.log(random)
     if(random < 10) {
         background.src = `https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${time}/0${random}.webp`;
     } else {
         background.src = `https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${time}/${random}.webp`;
     }
    
-    background.onload = () => {
+    background.addEventListener('load', () => {
         if(random < 10) {
             document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${time}/0${random}.webp')`;
         } else {
             document.body.style.backgroundImage = `url('https://raw.githubusercontent.com/Svetik-K/momentum_images/main/${time}/${random}.webp')`;
-        }     
-        
-    }; 
-    
+        }   
+    });
+      
     document.body.style.backgroundSize = 'cover';
 }
 

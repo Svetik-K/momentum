@@ -5,6 +5,7 @@ function showTime() {
     setTimeout(() => {
         showTime();
         showDate();
+        showGreeting();
     }, 1000);
 }
 
@@ -33,4 +34,4 @@ function showGreeting() {
     document.querySelector('.daytime').innerHTML = message;
 }
 
-export {showTime, showGreeting}
+export { showTime }

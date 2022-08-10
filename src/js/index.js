@@ -1,19 +1,36 @@
 import '../css/style.css'
 import '../css/owfont-regular.css'
 import { getRandomNum, getTimeOfDay, setBackground } from './background'
-import { showTime, showGreeting } from './calender'
+import { showTime } from './calender'
 import { getWeather } from './weather'
 
 
 showTime();
-showGreeting();
-getWeather();
- 
+getWeather(); 
 
 let randomNum = getRandomNum();
 let timeOfDay = getTimeOfDay();
 
 setBackground(randomNum, timeOfDay);
+
+
+// Local storage for name input
+const name = document.querySelector('.name');
+
+function setLocalStorage() {
+    localStorage.setItem('name', name.value);
+}
+window.addEventListener('beforeunload', setLocalStorage)
+
+function getLocalStorage() {
+    if(localStorage.getItem('name')) {
+      name.value = localStorage.getItem('name');
+    }
+}
+
+window.addEventListener('beforeunload', setLocalStorage);
+window.addEventListener('load', getLocalStorage);
+  
 
 
 // Background slider
@@ -69,7 +86,7 @@ loadSong(tracks[trackIndex]);
 function loadSong(song) {
     title.textContent = song;
     track.src = `./assets/sounds/${song}.mp3`;
-    track.volume = 0.2;
+    // track.volume = 0.2;
 }
 
 function playSong() {
