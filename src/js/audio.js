@@ -6,6 +6,8 @@ const track = document.querySelector('.track');
 const progressContainer = document.querySelector('.progress-container');
 const progress = document.querySelector('.progress');
 const audioBar = document.querySelector('.audio-player__info');
+const volumeProgress = document.querySelector('.volume-progress');
+const volumeButton = document.querySelector('.button_volume');
 
 
 const tracks = ['Aqua Caelestis', 'Ennio Morricone', 'River Flows In You', 'Summer Wind'];
@@ -17,6 +19,7 @@ loadSong(tracks[trackIndex]);
 function loadSong(song) {
     title.textContent = song;
     track.src = `./assets/sounds/${song}.mp3`;
+    track.volume = 0.2;
 }
 
 function playSong() {
@@ -73,6 +76,22 @@ function setProgress(e) {
     track.currentTime = (clickX / width) * duration;
 }
 
+function changeVolume() {
+    track.volume = volumeProgress.value;
+}
+
+function turnOffVolume(e) {
+    if(!e.target.classList.contains('mute')) {
+        volumeButton.classList.add('mute');
+        track.volume = 0;
+    } else {
+        volumeButton.classList.remove('mute');
+        track.volume = 0.5;
+    }
+}
+
+
+// Event listeners
 playButton.addEventListener('click', () => {
     const isPlaying = audioBar.classList.contains('play');
 
@@ -85,17 +104,8 @@ playButton.addEventListener('click', () => {
 
 prevButton.addEventListener('click', prevSong);
 nextButton.addEventListener('click', nextSong);
+volumeButton.addEventListener('click', turnOffVolume)
 track.addEventListener('timeupdate', updateProgress);
 track.addEventListener('ended', nextSong);
 progressContainer.addEventListener('click', setProgress);
-
-// module.exports = {
-//     prevSong,
-//     nextSong,
-//     updateProgress,
-//     nextSong,
-//     setProgress,
-//     loadSong,
-//     playSong,
-//     pauseSong
-// }
+volumeProgress.addEventListener('change', changeVolume);

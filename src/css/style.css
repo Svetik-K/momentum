@@ -27,6 +27,9 @@ ul {
     padding: 0;
 }
 
+.body {
+    background-repeat: no-repeat;
+}
 .page-wrapper {
     display: flex;
     flex-direction: column;
@@ -63,6 +66,7 @@ ul {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    outline: none;
 }
 .button_prev {
     width: 20px;
@@ -97,20 +101,14 @@ ul {
     background-repeat: no-repeat;
     background-size: contain;
 }
-.volume-container {
-    display: inline-block;
-    width: 30%;
-    background-color: var(--color-light);
-    border-radius: 5px;
-    cursor: pointer;
-    /* margin: 5px 0; */
-    height: 4px;
+.button_volume.mute {
+    background: url(../assets/svg/mute.ico);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 .volume-progress {
-    background-color: var(--color-audio);
-    border-radius: 5px;
-    height: 100%;
-    width: 50%;
+    width: 30%;
 }
 
 .audio-player__info {
@@ -156,7 +154,7 @@ ul {
 .playlist__item {
     display: flex;
     align-items: center;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding-bottom: 5px;
 }
 .ico_play {
@@ -165,8 +163,8 @@ ul {
     background-position: center;
     background-repeat: no-repeat;
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     margin-right: 10px;
 }
 
@@ -177,7 +175,7 @@ ul {
     align-items: flex-start;
 }
 .weather__city {
-    width: 250px;
+    width: 200px;
     text-align: left;
     font-size: 2.2rem;
     line-height: 3.2rem;
@@ -194,7 +192,7 @@ ul {
 }
 
 .weather__forecast {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
 }
 .weather__forecast ul li{
     padding-bottom: 10px;
@@ -286,13 +284,16 @@ ul {
     margin: 0 auto;
 }
 .button_reload {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     background: url(../assets/svg/reload.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+    margin-bottom: 20px;
 }
 .phrase {
     text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }

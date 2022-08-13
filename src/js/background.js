@@ -20,6 +20,7 @@ function setBackground(random, time) {
     });
 
     document.body.style.backgroundSize = 'cover';
+ 
 }
 
 function getTimeOfDay() {

@@ -5,10 +5,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/js/index.js',
+    entry: {
+        main: './src/js/index.js',
+        audio: './src/js/audio.js'
+    },
     output: {
         path: path.resolve(__dirname, 'dest'),
-        filename: 'bundle.js'    
+        filename: '[name].[contenthash].js'    
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -22,6 +25,7 @@ module.exports = {
                 { from: path.resolve(__dirname, 'src/assets/svg'), to: path.resolve(__dirname, 'dest/assets/svg') },
                 { from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dest/assets/images') },
                 { from: path.resolve(__dirname, 'src/fonts'), to: path.resolve(__dirname, 'dest/fonts') },
+                { from: path.resolve(__dirname, 'src/js/quotes.json'), to: path.resolve(__dirname, 'dest/quotes.json') },
             ],
         })
     ],
