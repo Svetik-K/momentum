@@ -1,7 +1,12 @@
+import tracks from './playlist';
+
 const playButton = document.querySelector('.button_play');
 const prevButton = document.querySelector('.button_prev');
 const nextButton = document.querySelector('.button_next');
+const playlist = document.querySelector('.playlist');
 const title = document.querySelector('.track-title');
+const timer = document.querySelector('.timer');
+const duration = document.querySelector('.track-duration');
 const track = document.querySelector('.track');
 const progressContainer = document.querySelector('.progress-container');
 const progress = document.querySelector('.progress');
@@ -9,17 +14,38 @@ const audioBar = document.querySelector('.audio-player__info');
 const volumeProgress = document.querySelector('.volume-progress');
 const volumeButton = document.querySelector('.button_volume');
 
-
-const tracks = ['Aqua Caelestis', 'Ennio Morricone', 'River Flows In You', 'Summer Wind'];
-
+// Load playlist
+tracks.forEach(song => {
+    const li = document.createElement('li');
+    li.classList.add('playlist__item');
+    li.textContent = song.title;
+    const button = document.createElement('button');
+    button.classList.add('button','button_play-track');
+    li.prepend(button);
+    playlist.append(li);
+})
 let trackIndex = 0;
 
 loadSong(tracks[trackIndex]);
+setActiveClass(trackIndex)
+
+function setActiveClass(index) {
+    const playlistTracks = document.querySelectorAll('.playlist__item');
+    playlistTracks[index].classList.add('active');
+}
+
+function removeActiveClass(index) {
+    const playlistTracks = document.querySelectorAll('.playlist__item');
+    playlistTracks[index].classList.remove('active');
+}
 
 function loadSong(song) {
-    title.textContent = song;
-    track.src = `./assets/sounds/${song}.mp3`;
+    title.textContent = song.title;
+    track.src = `./assets/sounds/${song.title}.mp3`;
+    duration.textContent = song.duration;
+    track.currentTime = 0;
     track.volume = 0.2;
+
 }
 
 function playSong() {
@@ -39,6 +65,7 @@ function pauseSong() {
 }
 
 function prevSong() {
+    removeActiveClass(trackIndex);
     trackIndex--;
 
     if(trackIndex < 0) {
@@ -46,11 +73,12 @@ function prevSong() {
     }
 
     loadSong(tracks[trackIndex]);
-
+    setActiveClass(trackIndex);
     playSong();
 }
 
 function nextSong() {
+    removeActiveClass(trackIndex);
     trackIndex++;
 
     if(trackIndex > tracks.length - 1) {
@@ -58,7 +86,7 @@ function nextSong() {
     }
 
     loadSong(tracks[trackIndex]);
-
+    setActiveClass(trackIndex);
     playSong();
 }
 

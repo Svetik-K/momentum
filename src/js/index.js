@@ -24,10 +24,10 @@ const reloadButton = document.querySelector('.button_reload');
 getQuotes();
 
 async function getQuotes() { 
-    let random = Math.floor(Math.random() * 200) + 1; 
     const quotes = './quotes.json';
     const response = await fetch(quotes);
-    const data = await response.json(); 
+    const data = await response.json();
+    let random = Math.floor(Math.random() * data.length) + 1; 
     phrase.textContent = data[random].text;
     author.textContent = data[random].author;   
 }

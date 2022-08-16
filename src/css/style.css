@@ -42,6 +42,7 @@ ul {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px 30px;
 }
 
@@ -112,14 +113,14 @@ ul {
 }
 
 .audio-player__info {
-    width: 100%;
+    width: calc(100% - 20px);
     position: absolute;
     top: 0;
-    left: 0;
+    left: 10px;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 0 0 10px 10px;
     opacity: 0;
-    padding: 10px 10px;
+    padding: 0px 10px 10px;
     transition: 0.5s ease-in-out, opacity 0.5s ease-in-out;
     z-index: -1;
 }
@@ -131,7 +132,14 @@ ul {
 }
 .audio-player__info.play {
     opacity: 1;
-    top: 40px;
+    top: 50px;
+    z-index: 20;
+}
+.track-info {
+    display: flex;
+}
+.track-duration {
+    margin-left: 5px;
 }
 .progress-container {
     background-color: var(--color-light);
@@ -157,7 +165,11 @@ ul {
     font-size: 1.2rem;
     padding-bottom: 5px;
 }
-.ico_play {
+.playlist__item.active {
+    color: var(--color-dark);
+    font-weight: bold;
+}
+.button_play-track {
     background: url(../assets/svg/play.svg);
     background-size: contain;
     background-position: center;
@@ -269,6 +281,7 @@ ul {
     color: var(--color-light);
 }
 
+/* Footer */
 .footer {
     width: 100%;
     flex: 1 1 auto;
@@ -296,4 +309,76 @@ ul {
     text-align: center;
     font-size: 1.2rem;
     margin-bottom: 10px;
+}
+
+@media all and (max-width: 1024px) {
+    .header {
+        padding: 20px 20px;
+    }
+    .main {
+        padding : 0 20px;
+    }
+    .current-time {
+        font-size: 5.2rem;
+        line-height: 6.2rem;
+    }
+    .current-date {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        margin-bottom: 10px;
+    }
+    .daytime {
+        font-size: 1.8rem;
+    }
+    .name {
+        width: 100px;
+        font-size: 1.8rem;
+        padding-left: 10px;
+    }
+    .name:focus {
+        font-size: 1.8rem;
+    }
+    .name:active {
+        font-size: 1.8rem;
+    }
+}
+
+@media all and (max-width: 520px) {
+    .header {
+        padding: 10px 10px;
+    }
+    .audio-player {
+        width: 200px;
+        margin-bottom: 10px;
+    }
+    .audio-player__controllers {
+        padding: 10px 10px;
+        background-color:var(--color-dark); 
+    }
+
+    .main {
+        padding : 0 10px;
+    }
+    .current-time {
+        font-size: 4.2rem;
+        line-height: 5.2rem;
+        margin-bottom: 5px;
+    }
+    .current-date {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+    .daytime {
+        font-size: 1.6rem;
+    }
+    .name {
+        width: 60px;
+        font-size: 1.6rem;
+    }
+    .name:focus {
+        font-size: 1.6rem;
+    }
+    .name:active {
+        font-size: 1.6rem;
+    }
 }
